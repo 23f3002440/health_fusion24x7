@@ -13,6 +13,11 @@ class User(db.Model):
     customer_details = db.relationship('Customer', backref='user', lazy=True, uselist=False)
     store_manager_details = db.relationship('StoreManager', backref='user', lazy=True, uselist=False)
     
+    def check_password(self, raw_password):
+        # In this simple example passwords are stored in plain text.
+        # Replace with a hashed check in production (werkzeug.security.check_password_hash).
+        return self.password == raw_password
+    
     
 # store_manager = StoreManager(qualification='Bsc')
 # user = User(user_email, password, user_name, store_manager_details=store_manager)

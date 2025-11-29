@@ -58,13 +58,8 @@ with app.app_context():
         
     db.session.commit()
 
-@app.route('/')
-def index():
-    return render_template('hello.html')
-
-@app.route('/about')
-def about():
-    return "About page"
+from controller.auth_routes import *
+from controller.routes import *
 
 
 if __name__ == "__main__":
